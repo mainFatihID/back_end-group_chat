@@ -1,11 +1,10 @@
 import express, { type Express, type Request, type Response } from 'express';
-import pool from './db/index.ts';
-import userGetRouter from './routes/usersGetRoute.ts';
+import usersRoute from './routes/usersRoute.ts';
 
 const app: Express = express();
 const port = 3000;
 
-app.use("/api/user", userGetRouter)
+app.use("/api/users", usersRoute);
 
 app.get('/', (req: Request, res: Response) => {
   res.send('Hello World!');
