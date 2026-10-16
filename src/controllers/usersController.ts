@@ -29,7 +29,7 @@ export const usersPostController = async (req: Request, res: Response) => {
 // Read | Get
 export const usersGetController = async (req: Request, res: Response) => {
   try {
-    const [rows] = await pool.query('SELECT user_id, username, email, created_at FROM tb_users');
+    const [rows] = await pool.query('SELECT id, username, email, created_at FROM tb_users');
     
     res.json(rows);
   } catch (error) {
@@ -45,7 +45,7 @@ export const usersPutController = async (req: Request, res: Response) => {
     const {id} = req.params;
     const {username} = req.body;
     const [result]: any = await pool.query(
-      'UPDATE tb_users SET username = ? WHERE user_id = ?',
+      'UPDATE tb_users SET username = ? WHERE id = ?',
       [username, id]
     );
 
@@ -67,7 +67,7 @@ export const usersDeleteController = async (req: Request, res: Response) => {
   try {
     const {id} = req.params;
     const [result]: any = await pool.query(
-      'DELETE FROM tb_users WHERE user_id = ?',
+      'DELETE FROM tb_users WHERE id = ?',
       [id]
     );
 

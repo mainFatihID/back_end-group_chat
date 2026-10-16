@@ -9,10 +9,19 @@ import pool from '../db/index.ts';
 export const groupMembersPostController = async (req: Request, res: Response) => {
   try {
     const { user_id, group_id, role } = req.body;
-    const [result]: any = await pool.query(
-      'INSERT INTO tb_group_members (user_id, group_id, role) VALUES (?, ?, ?)',
-      [user_id, group_id, role]
-    );
+
+    const columns = ['user_id', 'group_id'];
+    const values: any = [user_id, group_id];
+
+    if (role !== undefined && role !== null && role !== '') {
+      columns.push('role');
+      values.push(role);
+    }
+
+    const placeholders = values.map(() => '?').join(', ');
+    const query= `INSERT INTO tb_group_members (${columns.join(', ')}) VALUES (${placeholders})`;
+
+    const [result]: any = await pool.query(query, values);
 
     res.status(StatusCodes.CREATED).json({
       message   : 'Member added successfully',
@@ -42,11 +51,11 @@ export const groupMembersGetController = async (req: Request, res: Response) => 
 // Update | Put
 export const groupMembersPutController = async (req: Request, res: Response) => {
   try {
-    const { user_id } = req.body;
+    const { id } = req.params;
     const { role } = req.body;
     const [result]: any = await pool.query(
-      'UPDATE tb_group_members SET role = ? WHERE user_id = ?',
-      [role, user_id]
+      'UPDATE tb_group_members SET role = ? WHERE id = ?',
+      [role, id]
     );
 
     if (result.affectedRows === 0) {
@@ -67,7 +76,7 @@ export const groupMembersDeleteController = async (req: Request, res: Response) 
   try {
     const {id} = req.params;
     const [result]: any = await pool.query(
-      'DELETE FROM tb_group_members WHERE user_id = ?',
+      'DELETE FROM tb_group_members WHERE id = ?',
       [id]
     );
 
