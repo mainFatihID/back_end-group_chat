@@ -1,4 +1,8 @@
+// Packages
 import {type Request, type Response} from 'express';
+import { StatusCodes } from 'http-status-codes';
+
+// Files
 import pool from '../db/index.ts';
 
 // Create | Post
@@ -10,33 +14,33 @@ export const usersPostController = async (req: Request, res: Response) => {
       [username, email, password_hash]
     );
 
-    res.status(201).json({
+    res.status(StatusCodes.CREATED).json({
       message   : 'User created successfully',
       userId    : result.insertId
     });
 
   } catch (error) {
-    res.status(500).json({
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
       error     : (error as Error).message
     });
   }
-}
+};
 
 // Read | Get
-export const usersGetRoute = async (req: Request, res: Response) => {
+export const usersGetController = async (req: Request, res: Response) => {
   try {
     const [rows] = await pool.query('SELECT user_id, username, email, created_at FROM tb_users');
     
     res.json(rows);
   } catch (error) {
-    res.status(500).json({
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
       error     : (error as Error).message
     });
   }
-}
+};
 
 // Update | Put
-export const usersPutRoute = async (req: Request, res: Response) => {
+export const usersPutController = async (req: Request, res: Response) => {
   try {
     const {id} = req.params;
     const {username} = req.body;
@@ -46,20 +50,20 @@ export const usersPutRoute = async (req: Request, res: Response) => {
     );
 
     if (result.affectedRows === 0) {
-      res.status(404).json({error: 'User not faund'});
+      res.status(StatusCodes.NOT_FOUND).json({error: 'User not found'});
       return;
     } 
 
     res.json({message: 'User updated successfully'});
   } catch (error) {
-    res.status(500).json({
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
       error     : (error as Error).message
     });
   }
-}
+};
 
 // Delete | Delete
-export const usersDeleteRoute = async (req: Request, res: Response) => {
+export const usersDeleteController = async (req: Request, res: Response) => {
   try {
     const {id} = req.params;
     const [result]: any = await pool.query(
@@ -68,14 +72,14 @@ export const usersDeleteRoute = async (req: Request, res: Response) => {
     );
 
     if (result.affectedRows === 0) {
-      res.status(404).json({error: 'User not faund'});
+      res.status(StatusCodes.NOT_FOUND).json({error: 'User not found'});
       return;
     } 
 
     res.json({message: 'User deleted successfully'});
   } catch (error) {
-    res.status(500).json({
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
       error     : (error as Error).message
     });
   }
-}
+};

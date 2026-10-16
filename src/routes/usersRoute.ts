@@ -1,5 +1,5 @@
 import express, { Router } from 'express';
-import { usersDeleteRoute, usersGetRoute, usersPostController, usersPutRoute } from '../controllers/usersController.ts';
+import { usersPostController, usersGetController, usersPutController, usersDeleteController } from '../controllers/usersController.ts';
 
 const usersRoute: Router = express.Router();
 
@@ -7,12 +7,12 @@ const usersRoute: Router = express.Router();
 usersRoute.post('/', usersPostController);
 
 // Read | Get
-usersRoute.get('/', usersGetRoute);
+usersRoute.get('/', usersGetController);
 
 // Update | Put
-usersRoute.put('/:id', usersPutRoute);
+usersRoute.put('/:id', usersPutController);
 
 // Delete | Delete
-usersRoute.delete('/:id', usersDeleteRoute);
+usersRoute.delete('/:id', usersDeleteController);
 
 export default usersRoute;
