@@ -3,13 +3,13 @@
 // +------+-----------------------------------------------------------------------------------------+---------+
 // |  No. | Tasks                                                                                   | Status  |
 // +------+-----------------------------------------------------------------------------------------+---------+
-// |  1.  | Install dan pasang JWT.                                                                 |         |
-// |  2.  | Tes token login.                                                                        |         |
-// |  3.  | Install dan pasang Cloudinary.                                                          |         |
-// |  4.  | Tambah kolom ```profile_picture``` di Database                                          |         |
-// |  5.  | Tambah Controller dan Route untuk Register dan Edit user yang belum punya foto profil.  |         |
-// |  6.  | Tes fungsi CRUD foto profil.                                                            |         |
-// |  7.  | Evaluasi (add ., commit, push).                                                         |         |
+// |  1.  | Install dan pasang JWT.                                                                 | Done    |
+// |  2.  | Tes token login.                                                                        | Done    |
+// |  3.  | Install dan pasang Cloudinary.                                                          | Require |
+// |  4.  | Tambah kolom ```profile_picture``` di Database                                          | Require |
+// |  5.  | Tambah Controller dan Route untuk Register dan Edit user yang belum punya foto profil.  | Require |
+// |  6.  | Tes fungsi CRUD foto profil.                                                            | Require |
+// |  7.  | Evaluasi (add ., commit, push).                                                         | Require |
 // +------+-----------------------------------------------------------------------------------------+---------+
 
 // Packages
