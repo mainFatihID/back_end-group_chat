@@ -1,14 +1,16 @@
-// +--------------------------------------------------------------------------+
-// |  TO DO THIS NIGHT                                                        |
-// +------+---------------------------------------------------------+---------+
-// |  No. | Tasks                                                   | Status  |
-// +------+---------------------------------------------------------+---------+
-// |  1.  | Use CORS Middleware (already installed).                | Done    |
-// |  2.  | Install and use Status Code package from NPM.           | Done    |
-// |  3.  | Create Controllers and Routes for the remaining tables. | Done    |
-// |  4.  | Testing all table CRUD on ThunderClient.                | Done    |
-// |  5.  | Add, commit, push, and sleep.                           | Done    |
-// +------+---------------------------------------------------------+---------+
+// +----------------------------------------------------------------------------------------------------------+
+// |  TO DO THIS NIGHT                                                                                        |
+// +------+-----------------------------------------------------------------------------------------+---------+
+// |  No. | Tasks                                                                                   | Status  |
+// +------+-----------------------------------------------------------------------------------------+---------+
+// |  1.  | Install dan pasang JWT.                                                                 |         |
+// |  2.  | Tes token login.                                                                        |         |
+// |  3.  | Install dan pasang Cloudinary.                                                          |         |
+// |  4.  | Tambah kolom ```profile_picture``` di Database                                          |         |
+// |  5.  | Tambah Controller dan Route untuk Register dan Edit user yang belum punya foto profil.  |         |
+// |  6.  | Tes fungsi CRUD foto profil.                                                            |         |
+// |  7.  | Evaluasi (add ., commit, push).                                                         |         |
+// +------+-----------------------------------------------------------------------------------------+---------+
 
 // Packages
 import express, { type Express, type Request, type Response } from 'express';
